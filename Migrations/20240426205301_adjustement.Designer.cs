@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NewsProject.Models;
 
@@ -11,9 +12,11 @@ using NewsProject.Models;
 namespace NewsProject.Migrations
 {
     [DbContext(typeof(NewsDBContext))]
-    partial class NewsDBContextModelSnapshot : ModelSnapshot
+    [Migration("20240426205301_adjustement")]
+    partial class adjustement
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

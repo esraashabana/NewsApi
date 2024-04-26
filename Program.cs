@@ -1,6 +1,7 @@
 
 using Microsoft.EntityFrameworkCore;
 using NewsProject.Models;
+using NewsProject.Repositories;
 
 namespace News
 {
@@ -13,13 +14,14 @@ namespace News
 			// Add services to the container.
 
 			builder.Services.AddControllers();
-			// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 			builder.Services.AddEndpointsApiExplorer();
 			builder.Services.AddSwaggerGen();
 			builder.Services.AddDbContext<NewsDBContext>(options =>
 			{
-				options.UseSqlServer("Server=.;Database = NewsDB; Integrated Security = True; TrustServerCertificate = True; ");
+				options.UseLazyLoadingProxies().UseSqlServer("Server=.;Database = NewsDB; Integrated Security = True; TrustServerCertificate = True; ");
 			});
+			builder.Services.AddScoped<IAuthors, AuthorsRepo>();
+			builder.Services.AddScoped<INewsData, NewsRepo>();
 			var app = builder.Build();
 
 			// Configure the HTTP request pipeline.

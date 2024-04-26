@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using News;
 using News.Models;
 
 namespace NewsProject.Models
